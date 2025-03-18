@@ -1,0 +1,24 @@
+#configuracoes do banco de dados
+spring:
+  #nome e tipo do banco
+  datasource:
+    url: jdbc:h2:mem:apirest2025
+    username: apirest2025
+    password:
+  jpa:
+    #verificar as querys no log
+    snow-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: create #hibernate vai criar as tabelas
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    #acessar o banco de dados via browser
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
