@@ -16,8 +16,8 @@ public class Account {
     //nao permite valores nulos
     @Column(nullable = false)
     private String agency;
-    //scale: quantidade de inteiros, precision: casas decimais
-    @Column(scale = 13, precision = 2)
+    //precision: quantidade de inteiros, scale: casas decimais
+    @Column(precision = 13, scale = 2)
     private BigDecimal balance;
     //name: permite alterar o nome da coluna no banco
     @Column(name = "available_limit", scale = 13, precision = 2)
