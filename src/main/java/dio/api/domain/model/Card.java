@@ -13,9 +13,9 @@ public class Card {
     //aceita apenas valores unicos
     @Column(unique = true)
     private String number;
-    //scale: quantidade de inteiros, precision: casas decimais
+    //precision: quantidade de inteiros, scale: casas decimais
     //name: permite alterar o nome da coluna no banco
-    @Column(name = "additional_limit", scale = 13, precision = 2)
+    @Column(name = "additional_limit", precision = 13, scale = 2)
     private BigDecimal limit;
 
     public Long getId() {
