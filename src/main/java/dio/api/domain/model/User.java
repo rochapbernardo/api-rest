@@ -6,21 +6,21 @@ import java.util.List;
 
 @Entity(name = "tb_user")
 public class User {
-    @Id
     //gerar o id automaticamente
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     //cascade: criar relacao entre as entidades
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Card card;
     // fetch: ao buscar um usuário no banco sempre retorna toda a lista de features dele
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Feature> features;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Card card;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Feature> news;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<News> news;
 
     public Long getId() {
         return id;
@@ -62,11 +62,11 @@ public class User {
         this.features = features;
     }
 
-    public List<Feature> getNews() {
+    public List<News> getNews() {
         return news;
     }
 
-    public void setNews(List<Feature> news) {
+    public void setNews(List<News> news) {
         this.news = news;
     }
 }
