@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 //1º a entidade, 2º tipo do id
 public interface UserRepository extends JpaRepository<User, Long> {
+    boolean existsByAccountNumber(String accountNumber);
 }
