@@ -22,8 +22,7 @@ public class UserServiceImpl implements UserService {
     //busca pelo id e , pelo optional do java, utiliza tratamento de excecoes
     @Override
     public User findById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+        return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
     @Override
