@@ -32,4 +32,16 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.save(userToCreate);
     }
+
+    @Override
+    public void update(Long id, User user) {
+        if(findById(id)!=null){
+            userRepository.save(user);
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
 }
