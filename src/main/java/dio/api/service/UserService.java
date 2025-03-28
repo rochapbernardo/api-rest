@@ -6,6 +6,6 @@ import dio.api.domain.model.User;
 public interface UserService {
     User findById(Long id);
     User create(User userToCreate);
-    User update(Long id, User user);
+    void update(Long id, User user);
     void delete(Long id);
 }
