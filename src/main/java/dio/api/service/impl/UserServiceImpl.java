@@ -3,6 +3,7 @@ package dio.api.service.impl;
 import dio.api.domain.model.User;
 import dio.api.domain.repository.UserRepository;
 import dio.api.service.UserService;
+import dio.api.service.exception.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -34,11 +35,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(Long id, User user) {
-        if(findById(id)!=null){
-            userRepository.save(user);
+    public User update(Long id, User userToUpdate) {
+        User dbUser = this.findById(id);
+        if(!dbUser.getId().equals(userToUpdate.getId())){
+            throw new BusinessException("Update IDs must be the same.");
         }
+        dbUser.setName(userToUpdate.getName());
+        dbUser.setAccount(userToUpdate.getAccount());
+        dbUser.setCard(userToUpdate.getCard());
+        dbUser.setFeatures(userToUpdate.getFeatures());
+        dbUser.setNews(userToUpdate.getNews());
 
+        return this.userRepository.save(dbUser);
     }
 
     @Override
